@@ -3,7 +3,7 @@
   "name": "io.github.luw2007/skim-mcp-server",
   "title": "Skim MCP Server",
   "description": "MCP server for Skim code transformation. Compresses code 60-95% for LLM context optimization.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "homepage": "https://github.com/luw2007/skim-mcp-server",
   "license": "MIT",
   "sourceCode": "https://github.com/luw2007/skim-mcp-server",
@@ -15,7 +15,7 @@
     {
       "registryType": "npm",
       "identifier": "skim-mcp-server",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "transport": {
         "type": "stdio"
       }
