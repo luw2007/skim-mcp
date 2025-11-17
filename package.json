@@ -1,0 +1,81 @@
+{
+  "name": "skim-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP Server for Skim - Intelligent code compression for LLM context optimization",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "skim-mcp-server": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "node scripts/build.js",
+    "test": "node --test test/**/*.test.js",
+    "test:coverage": "c8 --reporter=html --reporter=text node --test test/**/*.test.js",
+    "test:watch": "node --test --watch test/**/*.test.js",
+    "lint": "eslint src/**/*.js test/**/*.js",
+    "lint:fix": "eslint src/**/*.js test/**/*.js --fix",
+    "format": "prettier --check src test",
+    "format:fix": "prettier --write src test",
+    "prepublishOnly": "npm run lint && npm run test && npm run build",
+    "install-skim": "node scripts/install-skim.js",
+    "postinstall": "npm run install-skim"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "skim",
+    "code-transformation",
+    "llm",
+    "context-optimization",
+    "claude",
+    "ai"
+  ],
+  "author": "luw2007",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luw2007/skim-mcp-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/luw2007/skim-mcp-server/issues"
+  },
+  "homepage": "https://github.com/luw2007/skim-mcp-server#readme",
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
+  "cpu": [
+    "x64",
+    "arm64"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.5.0",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "c8": "^9.0.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "prettier": "^3.2.5"
+  },
+  "peerDependencies": {
+    "rskim": "^0.7.0"
+  },
+  "peerDependenciesMeta": {
+    "rskim": {
+      "optional": false
+    }
+  },
+  "preferGlobal": false
+}
