@@ -681,13 +681,17 @@ async function main() {
 	}
 }
 
-main().catch((error) => {
-	logger.error("Fatal error", {
-		error: error.message,
-		stack: error.stack,
+// Only start server if this file is run directly (not imported as a module)
+// This prevents the server from starting during tests
+if (import.meta.url === `file://${process.argv[1]}`) {
+	main().catch((error) => {
+		logger.error("Fatal error", {
+			error: error.message,
+			stack: error.stack,
+		});
+		process.exit(1);
 	});
-	process.exit(1);
-});
+}
 
 // Export for testing
 export { main, validatePath, validateSource, validateLanguage, validateMode };
