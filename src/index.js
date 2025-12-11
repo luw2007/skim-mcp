@@ -19,6 +19,7 @@ import { CallToolRequestSchema, ListToolsRequestSchema } from "@modelcontextprot
 import { spawn } from "child_process";
 import { existsSync, realpathSync } from "fs";
 import { resolve, normalize, sep } from "path";
+import { fileURLToPath } from "url";
 import winston from "winston";
 import { SKIM_COMMON_PATHS } from "./constants.js";
 
@@ -683,7 +684,10 @@ async function main() {
 
 // Only start server if this file is run directly (not imported as a module)
 // This prevents the server from starting during tests
-if (import.meta.url === `file://${process.argv[1]}`) {
+const __filename = fileURLToPath(import.meta.url);
+const isMainModule = realpathSync(__filename) === realpathSync(process.argv[1] || "");
+
+if (isMainModule) {
 	main().catch((error) => {
 		logger.error("Fatal error", {
 			error: error.message,
